@@ -1,10 +1,10 @@
 """Users models"""
-
+ 
 #Django
 from django.contrib.auth.models import User
 from django.db import models
 
-class Profile(models.Mode):
+class Profile(models.Model):
     """Profile model
         proxy models tha extends with the base data with other information
     """
