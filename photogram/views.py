@@ -8,6 +8,8 @@ from datetime import datetime
 from django.http import JsonResponse
 import json
 
+from django.shortcuts import render
+
 
 def hello_world(request):
     """return hello world"""

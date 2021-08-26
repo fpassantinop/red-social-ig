@@ -38,7 +38,8 @@ urlpatterns = [
     path('users/login/', users_views.login_view, name='login'),
     path('users/logout/', users_views.logout_view, name='logout') ,
 
-    path('users/signup/', users_views.signup, name='signup') 
+    path('users/signup/', users_views.signup, name='signup'),
+    path('users/me/profile', users_views.update_profile, name='update_profile')  
 
     #path('admin/', admin.site.urls),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
