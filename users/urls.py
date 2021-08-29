@@ -1,43 +1,42 @@
-"""users urls"""
+"""Users URLs."""
 
-#Django
+# Django
 from django.urls import path
 from django.views.generic import TemplateView
 
-#views
+# View
 from users import views
+
 
 urlpatterns = [
 
-    #posts
+    # Posts
     path(
-        route='profile/<str:username>/', 
-        view=TemplateView.as_view(template_name='users/detail.html'),
+        route='@<str:username>/',
+        view=views.UserDetailView.as_view(),
         name='detail'
     ),
-    
 
-    #management
+    # Management
     path(
-        route='users/login/', 
-        view=views.login_view, 
+        route='login/',
+        view=views.login_view,
         name='login'
     ),
     path(
-        route='users/logout/', 
-        view=views.logout_view, 
+        route='logout/',
+        view=views.logout_view,
         name='logout'
     ),
     path(
-        route='users/signup/', 
-        view=views.signup, 
+        route='signup/',
+        view=views.signup,
         name='signup'
     ),
     path(
-        route='users/me/profile', 
+        route='me/profile/',
         view=views.update_profile,
-        name='update_profile'
-    )  
+        name='update'
+    )
+
 ]
-
-
