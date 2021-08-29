@@ -1,5 +1,5 @@
 """Posts urls"""
-
+ 
 #Django 
 from django.urls import path
 
@@ -16,7 +16,7 @@ urlpatterns = [
     path(
         route='posts/new/',
         view=views.create_post,
-        name='create_post'
+        name='create'
     )
 ]
 
