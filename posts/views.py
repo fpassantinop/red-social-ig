@@ -1,27 +1,24 @@
-"""Posts views"""
+"""Posts views."""
 
-#Django
+# Django
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import CreateView, DetailView, ListView
 
-#Forms
-from posts.form import PostForm
+# Forms
+from posts.forms import PostForm
 
-#Utilities
-from datetime import datetime
-
-#models
+# Models
 from posts.models import Post
 
 
+class PostsFeedView(LoginRequiredMixin, ListView):
+    """Return all published posts."""
 
-class PostFeedView(LoginRequiredMixin, ListView):
-    """return all published posts."""
     template_name = 'posts/feed.html'
     model = Post
     ordering = ('-created',)
-    paginate_by = 2
+    paginate_by = 30
     context_object_name = 'posts'
 
 
@@ -36,7 +33,7 @@ class PostDetailView(LoginRequiredMixin, DetailView):
 class CreatePostView(LoginRequiredMixin, CreateView):
     """Create a new post."""
 
-    template_name = 'posts/new.html'
+    template_name = 'posts/new.hTml'
     form_class = PostForm
     success_url = reverse_lazy('posts:feed')
 
@@ -46,6 +43,3 @@ class CreatePostView(LoginRequiredMixin, CreateView):
         context['user'] = self.request.user
         context['profile'] = self.request.user.profile
         return context
-
-
-
